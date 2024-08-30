@@ -1,0 +1,108 @@
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 131, in test
+    output , k, v =  compute_device.mha_gen(h, mask, w_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 459, in mha_gen
+    value = F.linear(value, w_out.data, bias=b_out.data)
+RuntimeError: mat1 and mat2 must have the same dtype

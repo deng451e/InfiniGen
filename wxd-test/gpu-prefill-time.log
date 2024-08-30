@@ -1,0 +1,60 @@
+===========================================
+device: cuda:0, batch size: 32, hidden dim: 2048, sequence length: 256, memory usage: 0.313 GB
+repeat times: 100, self attentin time: 0.00926
+===========================================
+device: cuda:0, batch size: 32, hidden dim: 2048, sequence length: 512, memory usage: 0.563 GB
+repeat times: 100, self attentin time: 0.0221
+===========================================
+device: cuda:0, batch size: 32, hidden dim: 2048, sequence length: 1024, memory usage: 1.06 GB
+repeat times: 100, self attentin time: 0.056
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 99, in test
+    output , k, v =  compute_device.mha(h, mask, w_q, b_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 345, in mha
+    attn_weights = torch.where(mask, attn_weights, -1e4)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 GiB (GPU 0; 23.55 GiB total capacity; 18.70 GiB already allocated; 4.00 GiB free; 19.08 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+===========================================
+device: cuda:0, batch size: 64, hidden dim: 2048, sequence length: 256, memory usage: 0.563 GB
+repeat times: 100, self attentin time: 0.0214
+===========================================
+device: cuda:0, batch size: 64, hidden dim: 2048, sequence length: 512, memory usage: 1.06 GB
+repeat times: 100, self attentin time: 0.0424
+===========================================
+device: cuda:0, batch size: 64, hidden dim: 2048, sequence length: 1024, memory usage: 2.06 GB
+repeat times: 100, self attentin time: 0.116
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 99, in test
+    output , k, v =  compute_device.mha(h, mask, w_q, b_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 334, in mha
+    attn_weights = torch.bmm(q, k)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 GiB (GPU 0; 23.55 GiB total capacity; 5.07 GiB already allocated; 18.00 GiB free; 5.08 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+===========================================
+device: cuda:0, batch size: 128, hidden dim: 2048, sequence length: 256, memory usage: 1.06 GB
+repeat times: 100, self attentin time: 0.0361
+===========================================
+device: cuda:0, batch size: 128, hidden dim: 2048, sequence length: 512, memory usage: 2.06 GB
+repeat times: 100, self attentin time: 0.0874
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 99, in test
+    output , k, v =  compute_device.mha(h, mask, w_q, b_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 345, in mha
+    attn_weights = torch.where(mask, attn_weights, -1e4)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 GiB (GPU 0; 23.55 GiB total capacity; 21.20 GiB already allocated; 1023.19 MiB free; 22.08 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+===========================================
+Traceback (most recent call last):
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 155, in <module>
+    test()
+  File "/home/c3/code/infinigen/wxd-test/test-torchTensor.py", line 99, in test
+    output , k, v =  compute_device.mha(h, mask, w_q, b_q,
+  File "/home/c3/code/infinigen/speedup/flexgen/flexgen/pytorch_backend.py", line 334, in mha
+    attn_weights = torch.bmm(q, k)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 GiB (GPU 0; 23.55 GiB total capacity; 10.07 GiB already allocated; 13.00 GiB free; 10.08 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
