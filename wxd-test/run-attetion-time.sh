@@ -1,3 +1,7 @@
+rm cpu-prefill-time.log
+rm gpu-prefill-time.log
+rm  cpu-decode-time.log
+rm  gpu-decode-time.log
 for phase  in "prefill" "decode"
 do 
     for batch_size in 32 64 128
