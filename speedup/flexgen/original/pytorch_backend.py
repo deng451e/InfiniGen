@@ -424,7 +424,7 @@ class TorchDevice:
                     q = q.float().cpu()
                     k, v = k.float(), v.float()
                     value = self._attention_value(q, k, v, attention_mask.data,
-                        b, src_s, tgt_s, n_head, head_dim).cuda().half()
+                        b, src_s, tgt_s, n_head, head_dim).half()
             else:  # Sparse attention
                 # shape: (s, b * n_head, head_dim)
                 k = k_cache.data[:src_s]
@@ -440,7 +440,7 @@ class TorchDevice:
                     q = q.float().cpu()
                     value = self._sparse_attention_value(q, k, v_new, v_cache,
                         attention_mask.data, b, src_s, tgt_s, n_head, head_dim,
-                        attn_sparsity).cuda().half()
+                        attn_sparsity).half()
         else:  # Mixed device attention
             assert attn_sparsity >= 1.0
             value = self._mixed_device_attention(q, k_cache, v_cache,
