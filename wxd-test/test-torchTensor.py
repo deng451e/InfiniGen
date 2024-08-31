@@ -13,7 +13,8 @@ from utils import add_parser_arguments, weight_init
 
 
 
-path="/home/c3/code/infinigen/speedup/flexgen"
+ 
+path= os. getcwd() + "/../speedup/flexgen"
 original=f"{path}/original"
 flexgen=f"{path}/flexgen"
 cmd = f"ln -sf {original}/flex_opt.py {path}/flexgen/flex_opt.py"
