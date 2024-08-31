@@ -449,6 +449,9 @@ class TorchDevice:
 
         # shape: (b, 1, h)
         value = value.transpose(1, 2).view(b, tgt_s, h)
+        if w_out.data.dtype != value.dtype:
+            value = value.to(torch.float32)
+        
         value = F.linear(value, w_out.data, bias=b_out.data)
 
         value.add_(inputs.data)
