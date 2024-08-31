@@ -3,9 +3,7 @@ README.md
 pyproject.toml
 flexgen/__init__.py
 flexgen/compression.py
-flexgen/flex_opt.py
 flexgen/opt_config.py
-flexgen/pytorch_backend.py
 flexgen/timer.py
 flexgen/utils.py
 flexgen.egg-info/PKG-INFO
