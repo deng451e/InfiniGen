@@ -5,13 +5,6 @@ import argparse
 import numpy as np
 import psutil 
 
-from flexgen.pytorch_backend import (TorchDevice, TorchDisk, TorchLink,
-    TorchMixedDevice, DeviceType, general_copy, fix_recursive_import, TorchTensor)
-from flexgen.compression import CompressionConfig
-from utils import add_parser_arguments, weight_init
-
-
-
 
  
 path= os. getcwd() + "/../speedup/flexgen"
@@ -21,6 +14,16 @@ cmd = f"ln -sf {original}/flex_opt.py {path}/flexgen/flex_opt.py"
 os.system(cmd) 
 cmd = f"ln -sf {original}/pytorch_backend.py {path}/flexgen/pytorch_backend.py"
 os.system(cmd)  
+
+from flexgen.pytorch_backend import (TorchDevice, TorchDisk, TorchLink,
+    TorchMixedDevice, DeviceType, general_copy, fix_recursive_import, TorchTensor)
+from flexgen.compression import CompressionConfig
+from utils import add_parser_arguments, weight_init
+
+
+
+
+ 
  
 
 
