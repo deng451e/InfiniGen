@@ -3,15 +3,16 @@ import torch
 from flexgen.pytorch_backend import (TorchDevice, TorchDisk, TorchLink,
     TorchMixedDevice, DeviceType, general_copy, fix_recursive_import, TorchTensor)
 def add_parser_arguments(parser):
-   
-    parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--warmup", type=int, default=10)
-    parser.add_argument("--repeat", type=int, default=100)
+    parser.add_argument("--arch_name", type=str, default="opt-1.3b") 
+    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--warmup", type=int, default=5)
+    parser.add_argument("--repeat", type=int, default=10)
     parser.add_argument("--attn-sparsity", type=float, default=1.0)
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--seq-len", type=int, default=1024)
     parser.add_argument("--prefill", action="store_true") 
-
+     
+ 
 def weight_init(hidden_size,device,compute_device):
 
     w_q_ = torch.randn((hidden_size,hidden_size),dtype=torch.float32,device=device)

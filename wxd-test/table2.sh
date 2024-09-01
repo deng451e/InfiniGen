@@ -7,30 +7,30 @@ seqlen=2048
 alpha=4
 budget=0.2
 
-path=$(pwd)"/../accuracy/perplexity"
+path=$(pwd)"/../accuracy/perplexity/"
  
-for size in 6.7b 13b;do
+for size in 6.7b;do
   for dataset in "wikitext2" "ptb";do
     echo opt-$size ${dataset} 100% cache
-    python opt.py --model "../setup/opt-model/opt-${size}" \
+    python ${path}opt.py --model ${path}"../setup/opt-model/opt-${size}" \
       --eval_dataset ${dataset} \
       --seq_len ${seqlen} \
       --eval_samples 0 \
       --model_name "opt-${size}" \
       --infinigen \
       --partial_weight_ratio ${partial} \
-      --partial_weight_path "../setup/weights/opt-${size}_${partial}" \
+      --partial_weight_path ${path}"../setup/weights/opt-${size}_${partial}" \
       --alpha ${alpha} \
       --budget ${budget} \
       --capacity 1.0
   done
 done
 
-for size in 6.7b 13b;do
+for size in 6.7b;do
   for dataset in "wikitext2" "ptb";do
     for evict in fifo lru counter;do
       echo opt-$size ${dataset} 80% cache evict ${evict}
-      python opt.py --model "../setup/opt-model/opt-${size}" \
+      python ${path}opt.py --model ${path}"../setup/opt-model/opt-${size}" \
       --eval_dataset ${dataset} \
         --seq_len ${seqlen} \
         --eval_samples 0 \
@@ -50,7 +50,7 @@ done
 alpha=5
 budget=0.2
 
-for size in 7b 13b;do
+for size in 7b;do
   for dataset in "wikitext2" "ptb";do
     echo llama-2-${size} ${dataset} 100% cache
     python llama.py --model "${LLAMA_PATH}/llama-2-${size}" \
@@ -68,7 +68,7 @@ for size in 7b 13b;do
   done
 done
 
-for size in 7b 13b;do
+for size in 7b;do
   for dataset in "wikitext2" "ptb";do
     for evict in fifo lru counter;do
       echo llama-2-${size} ${dataset} 80% cache evict ${evict}

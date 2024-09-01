@@ -35,8 +35,7 @@ parser = argparse.ArgumentParser()
 add_parser_arguments(parser)
 args = parser.parse_args()
 
-
-arch_name = "opt-1.3b"
+arch_name = args.arch_name 
 device = args.device
 prefill = args.prefill
 warmup = args.warmup
@@ -89,7 +88,9 @@ if prefill: # prefill
  
     def test():
         if "cuda" in device:
-            mem_usage = torch.cuda.memory_allocated(0)/1024**3
+            #mem_usage = torch.cuda.memory_allocated(0)/1024**3
+            torch.cuda.reset_peak_memory_stats( ) 
+            
         else:
             mem_usage = psutil.virtual_memory().used/1024**3
         input     = torch.randn((batch_size,seq_len,hidden_size),dtype=torch.float32,device=device)
@@ -105,7 +106,9 @@ if prefill: # prefill
             False,CompressionConfig)
         if "cuda" in device:
             torch.cuda.synchronize()
-            mem_usages.append(torch.cuda.memory_allocated(0)/1024**3 - mem_usage)
+            #mem_usages.append(torch.cuda.memory_allocated(0)/1024**3 - mem_usage)
+            mem_usages.append(torch.cuda.max_memory_allocated( )/1024**3)
+            
         else:
             
             mem_usages.append(psutil.virtual_memory().used/1024**3 - mem_usage)
@@ -117,7 +120,8 @@ else: # decode
     
     def test():
         if "cuda" in device:
-            mem_usage = torch.cuda.memory_allocated(0)/1024**3
+            torch.cuda. reset_peak_memory_stats( )
+           
         else:
             mem_usage = psutil.virtual_memory().used/1024**3
         input     = torch.randn((batch_size,1,hidden_size),dtype=torch.float32,device=device)
@@ -138,7 +142,7 @@ else: # decode
             False,CompressionConfig)
         if "cuda" in device:
             torch.cuda.synchronize()
-            mem_usages.append(torch.cuda.memory_allocated(0)/1024**3 - mem_usage)
+            mem_usages.append(torch.cuda.max_memory_allocated( )/1024**3 )
         else:
             
             mem_usages.append(psutil.virtual_memory().used/1024**3 - mem_usage)
@@ -167,9 +171,9 @@ for _ in range(repeat):
 end_time = time.perf_counter()
 
 if prefill:
-    print(f"device: {device}, batch size: {batch_size}, hidden dim: {hidden_size}, sequence length: {seq_len}, memory usage: {(np.mean(mem_usages)):.3} GB")
+    print(f"memory usage: {(np.mean(mem_usages)):.3} GB")
 
 else:
-    print(f"device: {device}, batch size: {batch_size}, hidden dim: {hidden_size}, cache size: {seq_len}, memory usage: {(np.mean(mem_usages)):.3} GB ")
+    print(f"memory usage: {(np.mean(mem_usages)):.3} GB ")
 
-print(f"repeat times: {repeat}, self attentin time: {(end_time-start_time)/float(repeat):.3}")
+print(f"self attentin time: {(end_time-start_time)/float(repeat):.3}")
