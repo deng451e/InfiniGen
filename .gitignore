@@ -1,4 +1,5 @@
 *.log 
 *.pyc
 *.so
+*.ipynb
 __pycache__
