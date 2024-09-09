@@ -87,12 +87,15 @@ mem_usages = list()
 if prefill: # prefill 
  
     def test():
+        p = psutil.Process()
         if "cuda" in device:
             #mem_usage = torch.cuda.memory_allocated(0)/1024**3
             torch.cuda.reset_peak_memory_stats( ) 
+             
             
         else:
-            mem_usage = psutil.virtual_memory().used/1024**3
+            # mem_usage = psutil.virtual_memory().used/1024**3
+            mem_usage = p.memory_info().rss/1024**3
         input     = torch.randn((batch_size,seq_len,hidden_size),dtype=torch.float32,device=device)
         h         = TorchTensor((batch_size,seq_len,hidden_size),torch.float32, input, compute_device)
             
@@ -108,10 +111,11 @@ if prefill: # prefill
             torch.cuda.synchronize()
             #mem_usages.append(torch.cuda.memory_allocated(0)/1024**3 - mem_usage)
             mem_usages.append(torch.cuda.max_memory_allocated( )/1024**3)
+            torch.cuda.empty_cache()
             
         else:
             
-            mem_usages.append(psutil.virtual_memory().used/1024**3 - mem_usage)
+            mem_usages.append( p.memory_info().rss/1024**3 - mem_usage)
 
 
         h.delete(); mask.delete(); w_q.delete(); b_q.delete(); w_k.delete(); b_k.delete(); w_v.delete(); b_v.delete(); w_out.delete(); b_out.delete(); w_ln.delete(); b_ln.delete()
@@ -119,11 +123,16 @@ if prefill: # prefill
 else: # decode
     
     def test():
+        p = psutil.Process()
         if "cuda" in device:
             torch.cuda. reset_peak_memory_stats( )
            
         else:
-            mem_usage = psutil.virtual_memory().used/1024**3
+            # mem_usage = psutil.virtual_memory().used/1024**3
+             
+            mem_usage =  p.memory_info().rss/1024**3
+
+
         input     = torch.randn((batch_size,1,hidden_size),dtype=torch.float32,device=device)
         h         = TorchTensor((batch_size,1,hidden_size),torch.float32, input, compute_device)
         # shape: (s, b * n_head, head_dim)
@@ -143,9 +152,10 @@ else: # decode
         if "cuda" in device:
             torch.cuda.synchronize()
             mem_usages.append(torch.cuda.max_memory_allocated( )/1024**3 )
+            torch.cuda.empty_cache()
         else:
             
-            mem_usages.append(psutil.virtual_memory().used/1024**3 - mem_usage)
+            mem_usages.append(p.memory_info().rss/1024**3- mem_usage)
         
         h.delete(); mask.delete(); w_q.delete(); b_q.delete(); w_k.delete(); b_k.delete(); w_v.delete(); b_v.delete(); w_out.delete(); b_out.delete(); w_ln.delete(); b_ln.delete()
         output.delete();k.delete;v.delete
