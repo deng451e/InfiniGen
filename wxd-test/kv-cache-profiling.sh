@@ -26,7 +26,7 @@ do
                 outpt="======================================================== "$'\n'
                 outpt+="prompt len: ${prompt_len}, gen_len: ${gen_len}, "$'\n'
                 
-                CMD="--model huggingface/${arch_name} --percent 100 0 0 100 100 0 --overlap false --gpu-batch-size 1 --num-gpu-batches 1 --prompt-len ${prompt_len} --gen-len ${gen_len} --warmup-input-path pg19_firstbook.txt --test-input-path  /home/c3/input-storage/wikitext.txt/wikitext-2-v1/test-00000-of-00001.txt"
+                CMD="--model huggingface/${arch_name} --percent 100 0 0 100 100 0 --overlap false --gpu-batch-size 1 --num-gpu-batches 1 --prompt-len ${prompt_len} --gen-len ${gen_len} --warmup-input-path pg19_firstbook.txt --test-input-path  ~/input/wikitext.txt/wikitext-2-v1/test-00000-of-00001.txt"
                 
                 python -m flexgen.flex_opt  $CMD 
         
