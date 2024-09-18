@@ -1263,10 +1263,16 @@ def run_flexgen(args):
     print("=================================================")
     # print(layer_attention_score.keys())
     model_dir  = args.model.split("/")[1]
-    if not  os.path.isdir(model_dir):
-        os.mkdir(model_dir)
+    dataset_name = args.test_input_path.split("/")[-2]
+    if not  os.path.isdir(dataset_name):
+        os.mkdir(dataset_name)
 
-    torch.save(layer_attention_score, f'{model_dir}/{prompt_len}-{gen_len}-{model_dir}.pth')
+    if not  os.path.isdir(f"{dataset_name}/{model_dir}"):
+        os.mkdir(f"{dataset_name}/{model_dir}")
+
+    
+     
+    torch.save(layer_attention_score, f'{dataset_name}/{model_dir}/{prompt_len}-{gen_len}-{model_dir}.pth')
 
 def add_parser_arguments(parser):
     parser.add_argument("--model", type=str, default="facebook/opt-6.7b",
